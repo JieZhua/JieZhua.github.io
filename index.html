@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zhuajie's Personal Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="#">Zhuajie</a>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch color theme">
+        Theme
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-text reveal">
+          <p class="eyebrow">Personal Website</p>
+          <h1>Hello, I am learning how to build websites.</h1>
+          <p class="intro">
+            I know some Python, and I am now learning HTML, CSS, Flexbox, and
+            GitHub Pages. This website will record my learning, projects, and
+            ideas.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#work">View My Work</a>
+            <a class="button secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal">
+          <p>Current Learning Path</p>
+          <ul>
+            <li>HTML structure</li>
+            <li>CSS box model</li>
+            <li>Flexbox layout</li>
+            <li>GitHub Pages publishing</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="about" class="section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2>About Me</h2>
+        </div>
+        <p class="section-text">
+          This is where your real introduction can go: who you are, what you
+          like, what you are learning, and what you want this website to show.
+          The first version does not need to be perfect. The goal is to make a
+          real website that you can keep improving.
+        </p>
+      </section>
+
+      <section id="skills" class="section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Skills</p>
+          <h2>Skills I Am Learning</h2>
+        </div>
+        <div class="skills-list">
+          <span>Python</span>
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>Flexbox</span>
+          <span>GitHub</span>
+        </div>
+      </section>
+
+      <section id="work" class="section work-section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Work</p>
+          <h2>Projects and Practice</h2>
+        </div>
+
+        <div class="work-grid">
+          <article class="work-card">
+            <h3>Personal Website V1</h3>
+            <p>
+              A one-page personal website built with HTML and CSS. Later, it
+              can be published with GitHub Pages.
+            </p>
+          </article>
+
+          <article class="work-card">
+            <h3>Flexbox Practice</h3>
+            <p>
+              Practice row layout, column layout, centering, wrapping, and
+              responsive page structure.
+            </p>
+          </article>
+
+          <article class="work-card image-card">
+            <img src="image.png" alt="Personal website visual reference" />
+            <div>
+              <h3>Visual Reference</h3>
+              <p>
+                This image can be used as a style reference for the next design
+                step.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact-section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Contact</p>
+          <h2>Contact Me</h2>
+        </div>
+        <p class="section-text">
+          Replace this area with your email, GitHub, Bilibili, Instagram, or any
+          other personal links.
+        </p>
+        <a class="text-link" href="https://github.com/">Open GitHub</a>
+      </section>
+    </main>
+  </body>
+</html>
