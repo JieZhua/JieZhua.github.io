@@ -3,124 +3,458 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zhuajie's Personal Website</title>
+    <title>JieZhua</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
-    <header class="site-header">
-      <a class="logo" href="#">Zhuajie</a>
-      <nav class="nav">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#work">Work</a>
-        <a href="#contact">Contact</a>
+    <!-- Intro / opening animation -->
+    <div class="intro-screen" aria-hidden="true">
+      <div class="intro-word">WELCOME</div>
+    </div>
+
+    <!-- Top index navigation -->
+    <header class="index-bar">
+      <a class="index-title" href="#home" data-route="home">
+        <span>WELCOME</span>
+        <span class="index-domain" data-wave-text>to jiezhua.github.io</span>
+      </a>
+
+      <nav class="index-nav" aria-label="Main navigation">
+        <a href="#home" data-route="home">Home</a>
+        <a href="#works" data-route="home" data-section="works">Works</a>
+        <a href="#designer" data-route="designer">Designer</a>
+        <a href="#developer" data-route="developer">Developer</a>
+        <a href="#thinker" data-route="thinker">Thinker</a>
+        <a href="#contact" data-route="home" data-section="contact">Contact</a>
       </nav>
-      <button class="theme-toggle" type="button" aria-label="Switch color theme">
-        Theme
-      </button>
     </header>
 
     <main>
-      <section class="hero">
-        <div class="hero-text reveal">
-          <p class="eyebrow">Personal Website</p>
-          <h1>Hello, I am learning how to build websites.</h1>
-          <p class="intro">
-            I know some Python, and I am now learning HTML, CSS, Flexbox, and
-            GitHub Pages. This website will record my learning, projects, and
-            ideas.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#work">View My Work</a>
-            <a class="button secondary" href="#contact">Contact Me</a>
+      <!-- Home view -->
+      <section class="view view--home is-active" id="home" data-view="home">
+        <!-- Home hello section -->
+        <section class="home-stage">
+          <!-- SVG hello writing animation starts here: copied/adapted with permission from ojh1111.com -->
+          <svg class="hello-svg" viewBox="0 0 638 200" aria-label="hello">
+            <path
+              class="hello-path hello-path-first"
+              pathLength="1"
+              d="M8.69214 166.553C36.2393 151.239 61.3409 131.548 89.8191 98.0295C109.203 75.1488 119.625 49.0228 120.122 31.0026C120.37 17.6036 113.836 7.43883 101.759 7.43883C88.3598 7.43883 79.9231 17.6036 74.7122 40.9363C69.005 66.5793 64.7866 96.0036 54.1166 190.356"
+            />
+            <path
+              class="hello-path hello-path-rest"
+              pathLength="1"
+              d="M55.1624 181.135C60.6251 133.114 81.4118 98.0479 107.963 98.0479C123.844 98.0479 133.937 110.703 131.071 128.817C129.457 139.487 127.587 150.405 125.408 163.06C122.869 178.941 130.128 191.348 152.122 191.348C184.197 191.348 219.189 173.523 237.097 145.915C243.198 136.509 245.68 128.073 245.928 119.884C246.176 104.996 237.739 93.8296 222.851 93.8296C203.992 93.8296 189.6 115.17 189.6 142.465C189.6 171.745 205.481 192.341 239.208 192.341C285.066 192.341 335.86 137.292 359.199 75.8585C365.788 58.513 368.26 42.4065 368.26 31.1512C368.26 17.8057 364.042 7.55823 352.131 7.55823C340.469 7.55823 332.777 16.6141 325.829 30.9129C317.688 47.4967 311.667 71.4162 309.203 98.4549C303 166.301 316.896 191.348 349.936 191.348C390 191.348 434.542 135.534 457.286 75.6686C463.803 58.513 466.275 42.4065 466.275 31.1512C466.275 17.8057 462.057 7.55823 450.146 7.55823C438.484 7.55823 430.792 16.6141 423.844 30.9129C415.703 47.4967 409.682 71.4162 407.218 98.4549C401.015 166.301 414.911 191.348 444.416 191.348C473.874 191.348 489.877 165.67 499.471 138.402C508.955 111.447 520.618 94.8221 544.935 94.8221C565.035 94.8221 580.916 109.71 580.916 137.75C580.916 168.768 560.792 192.093 535.362 192.341C512.984 192.589 498.285 174.475 499.774 147.179C501.511 116.907 519.873 94.8221 543.943 94.8221C557.839 94.8221 569.51 100.999 578.682 107.725C603.549 125.866 622.709 114.656 630.047 96.7186"
+            />
+          </svg>
+          <!-- SVG hello writing animation ends here -->
+
+          <a class="scroll-hint" href="#about" aria-label="Scroll to about section">
+            <span>Scroll</span>
+            <span class="scroll-line"></span>
+          </a>
+        </section>
+
+        <!-- About section -->
+        <section class="page-section about-section reveal-section" id="about">
+          <div class="section-inner">
+            <p class="section-kicker">About</p>
+            <h1>
+              Welcome to my website. My name is Zhu Huajie.
+            </h1>
+            <p>
+              I am an architecture student at XJTU and POLIMI, with a minor in
+              computer science. I work as a designer, developer, and thinker:
+              designing spatial narratives, building digital workflows with
+              Python and computer vision, and writing about cities, images, and
+              everyday experience.
+            </p>
           </div>
-        </div>
+        </section>
 
-        <div class="hero-panel reveal">
-          <p>Current Learning Path</p>
-          <ul>
-            <li>HTML structure</li>
-            <li>CSS box model</li>
-            <li>Flexbox layout</li>
-            <li>GitHub Pages publishing</li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="about" class="section reveal">
-        <div class="section-heading">
-          <p class="eyebrow">About</p>
-          <h2>About Me</h2>
-        </div>
-        <p class="section-text">
-          This is where your real introduction can go: who you are, what you
-          like, what you are learning, and what you want this website to show.
-          The first version does not need to be perfect. The goal is to make a
-          real website that you can keep improving.
-        </p>
-      </section>
-
-      <section id="skills" class="section reveal">
-        <div class="section-heading">
-          <p class="eyebrow">Skills</p>
-          <h2>Skills I Am Learning</h2>
-        </div>
-        <div class="skills-list">
-          <span>Python</span>
-          <span>HTML</span>
-          <span>CSS</span>
-          <span>Flexbox</span>
-          <span>GitHub</span>
-        </div>
-      </section>
-
-      <section id="work" class="section work-section reveal">
-        <div class="section-heading">
-          <p class="eyebrow">Work</p>
-          <h2>Projects and Practice</h2>
-        </div>
-
-        <div class="work-grid">
-          <article class="work-card">
-            <h3>Personal Website V1</h3>
+        <!-- Identity cards section -->
+        <section class="identity-section" id="identity">
+          <article class="identity-card reveal-section">
+            <span>01</span>
+            <h2><span>I am a</span>Designer</h2>
             <p>
-              A one-page personal website built with HTML and CSS. Later, it
-              can be published with GitHub Pages.
+              I design through proportion, light, structure, and atmosphere,
+              moving from classical spatial research to measured drawings,
+              models, digital reconstruction, and portfolio narratives.
             </p>
           </article>
 
-          <article class="work-card">
-            <h3>Flexbox Practice</h3>
+          <article class="identity-card reveal-section">
+            <span>02</span>
+            <h2><span>I am a</span>Developer</h2>
             <p>
-              Practice row layout, column layout, centering, wrapping, and
-              responsive page structure.
+              I use Python, C, algorithms, data structures, and computer vision
+              as tools for thinking, automation, and building clearer links
+              between spatial information and digital workflows.
             </p>
           </article>
 
-          <article class="work-card image-card">
-            <img src="image.png" alt="Personal website visual reference" />
-            <div>
-              <h3>Visual Reference</h3>
-              <p>
-                This image can be used as a style reference for the next design
-                step.
-              </p>
+          <article class="identity-card reveal-section">
+            <span>03</span>
+            <h2><span>I am a</span>Thinker</h2>
+            <p>
+              I observe how rooms, streets, images, and systems shape movement
+              and memory, turning architectural thinking into notes on cities,
+              visual culture, and everyday experience.
+            </p>
+          </article>
+        </section>
+
+        <!-- Works teaser section -->
+        <section class="page-section works-section reveal-section" id="works">
+          <div class="section-inner">
+            <p class="section-kicker">Works</p>
+            <h2>All works, thoughts, and experiments begin from the archive.</h2>
+            <p>
+              This cover flow is the central index for architectural projects,
+              code experiments, essays, research notes, and other outcomes.
+            </p>
+
+            <div class="coverflow" data-coverflow aria-label="Works cover flow">
+              <button
+                class="coverflow-card coverflow-card--image"
+                type="button"
+                data-title="Architecture Design"
+                data-coverflow-route="designer"
+                data-coverflow-article="architecture-design"
+              >
+                <img src="成果/建筑设计/封面图片/屏幕截图 2026-05-29 175146.png" alt="Architecture Design cover" />
+              </button>
+
+              <button
+                class="coverflow-card coverflow-card--image"
+                type="button"
+                data-title="Design Studio I"
+                data-coverflow-route="designer"
+                data-coverflow-article="design-one"
+              >
+                <img src="成果/设计1/封面图片/屏幕截图 2026-05-29 175220.png" alt="Design Studio I cover" />
+              </button>
+
+              <button
+                class="coverflow-card coverflow-card--image"
+                type="button"
+                data-title="Design Studio II"
+                data-coverflow-route="designer"
+                data-coverflow-article="design-two"
+              >
+                <img src="成果/设计2/封面图片/屏幕截图 2026-05-29 175243.png" alt="Design Studio II cover" />
+              </button>
+
+              <button
+                class="coverflow-card coverflow-card--image"
+                type="button"
+                data-title="Architectural Survey"
+                data-coverflow-route="designer"
+                data-coverflow-article="survey"
+              >
+                <img src="成果/建筑测绘/封面图片/屏幕截图 2026-05-29 175309.png" alt="Architectural Survey cover" />
+              </button>
+
+              <button
+                class="coverflow-card coverflow-card--image"
+                type="button"
+                data-title="Technology Workshop"
+                data-coverflow-route="designer"
+                data-coverflow-article="technology-workshop"
+              >
+                <img src="成果/建筑技术工坊/封面图片/屏幕截图 2026-05-29 175057.png" alt="Technology Workshop cover" />
+              </button>
+
+              <button
+                class="coverflow-card"
+                type="button"
+                data-title="Personal Website"
+                data-coverflow-route="developer"
+                data-coverflow-article="website"
+              >
+                <span>Web</span>
+                <strong>Personal Website</strong>
+                <small>Developer</small>
+              </button>
+
+              <button
+                class="coverflow-card"
+                type="button"
+                data-title="Thought Archive"
+                data-coverflow-route="thinker"
+                data-coverflow-article="notes"
+              >
+                <span>Notes</span>
+                <strong>Thought Archive</strong>
+                <small>Thinker</small>
+              </button>
+            </div>
+
+            <p class="coverflow-title" data-coverflow-title>Architecture Design</p>
+          </div>
+        </section>
+
+        <!-- Contact section -->
+        <footer class="contact-bar reveal-section" id="contact">
+          <span>Contact</span>
+          <div class="contact-items">
+            <a href="https://github.com/JieZhua" target="_blank" rel="noreferrer">GitHub</a>
+            <span>Email later</span>
+            <span>Portfolio archive later</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- Designer view -->
+      <section class="view page-view collection-view" id="designer" data-view="designer">
+        <div class="collection" data-collection="designer">
+          <article class="article is-current">
+            <div class="cover-entry">
+              <button class="cover-entry__button cover-entry__button--image" type="button" data-open-article="architecture-design">
+                <img src="成果/建筑设计/封面图片/屏幕截图 2026-05-29 175146.png" alt="Architecture Design cover" />
+              </button>
+              <div class="caption">
+                <h2>Architecture Design</h2>
+                <p>Portfolio pages / Designer</p>
+              </div>
+            </div>
+
+            <div class="article-content is-open" data-article-content="architecture-design">
+              <header class="article-header">
+                <p class="section-kicker">Architecture / 2025</p>
+                <h2>Architecture Design</h2>
+                <p>A portfolio sequence of architectural design work.</p>
+              </header>
+              <div class="project-images">
+                <img src="成果/建筑设计/Page_1_docsmall.com.jpg" alt="Architecture Design page 1" loading="lazy" />
+                <img src="成果/建筑设计/Page_2_docsmall.com.jpg" alt="Architecture Design page 2" loading="lazy" />
+                <img src="成果/建筑设计/Page_3_docsmall.com.jpg" alt="Architecture Design page 3" loading="lazy" />
+              </div>
             </div>
           </article>
+
+          <article class="article">
+            <div class="cover-entry">
+              <button class="cover-entry__button cover-entry__button--image" type="button" data-open-article="design-one">
+                <img src="成果/设计1/封面图片/屏幕截图 2026-05-29 175220.png" alt="Design Studio I cover" />
+              </button>
+              <div class="caption">
+                <h2>Design Studio I</h2>
+                <p>Merged design boards and portfolio sheets.</p>
+              </div>
+            </div>
+
+            <div class="article-content" data-article-content="design-one">
+              <header class="article-header">
+                <p class="section-kicker">Studio / 2026</p>
+                <h2>Design Studio I</h2>
+                <p>Merged design boards and portfolio sheets.</p>
+              </header>
+              <div class="project-images">
+                <img src="成果/设计1/Page_1_docsmall.com.jpg" alt="Design Studio I page 1" loading="lazy" />
+                <img src="成果/设计1/Page_2_docsmall.com.jpg" alt="Design Studio I page 2" loading="lazy" />
+                <img src="成果/设计1/Page_3_docsmall.com.jpg" alt="Design Studio I page 3" loading="lazy" />
+              </div>
+            </div>
+          </article>
+
+          <article class="article">
+            <div class="cover-entry">
+              <button class="cover-entry__button cover-entry__button--image" type="button" data-open-article="design-two">
+                <img src="成果/设计2/封面图片/屏幕截图 2026-05-29 175243.png" alt="Design Studio II cover" />
+              </button>
+              <div class="caption">
+                <h2>Design Studio II</h2>
+                <p>A compact studio sequence for later refinement.</p>
+              </div>
+            </div>
+
+            <div class="article-content" data-article-content="design-two">
+              <header class="article-header">
+                <p class="section-kicker">Studio / 2026</p>
+                <h2>Design Studio II</h2>
+                <p>A compact studio sequence for later refinement.</p>
+              </header>
+              <div class="project-images">
+                <img src="成果/设计2/Page_1_docsmall.com.jpg" alt="Design Studio II page 1" loading="lazy" />
+                <img src="成果/设计2/Page_2_docsmall.com.jpg" alt="Design Studio II page 2" loading="lazy" />
+                <img src="成果/设计2/Page_3_docsmall.com.jpg" alt="Design Studio II page 3" loading="lazy" />
+                <img src="成果/设计2/Page_4_docsmall.com.jpg" alt="Design Studio II page 4" loading="lazy" />
+                <img src="成果/设计2/Page_5_docsmall.com.jpg" alt="Design Studio II page 5" loading="lazy" />
+                <img src="成果/设计2/Page_6_docsmall.com.jpg" alt="Design Studio II page 6" loading="lazy" />
+                <img src="成果/设计2/Page_7_docsmall.com.jpg" alt="Design Studio II page 7" loading="lazy" />
+              </div>
+            </div>
+          </article>
+
+          <article class="article">
+            <div class="cover-entry">
+              <button class="cover-entry__button cover-entry__button--image" type="button" data-open-article="survey">
+                <img src="成果/建筑测绘/封面图片/屏幕截图 2026-05-29 175309.png" alt="Architectural Survey cover" />
+              </button>
+              <div class="caption">
+                <h2>Architectural Survey</h2>
+                <p>Measured drawing and survey documentation.</p>
+              </div>
+            </div>
+
+            <div class="article-content" data-article-content="survey">
+              <header class="article-header">
+                <p class="section-kicker">Survey / 2025</p>
+                <h2>Architectural Survey</h2>
+                <p>Measured drawing and survey documentation.</p>
+              </header>
+              <div class="project-images">
+                <img src="成果/建筑测绘/Page_1_docsmall.com.jpg" alt="Architectural Survey page 1" loading="lazy" />
+                <img src="成果/建筑测绘/Page_2_docsmall.com.jpg" alt="Architectural Survey page 2" loading="lazy" />
+                <img src="成果/建筑测绘/Page_3_docsmall.com.jpg" alt="Architectural Survey page 3" loading="lazy" />
+              </div>
+            </div>
+          </article>
+
+          <article class="article">
+            <div class="cover-entry">
+              <button class="cover-entry__button cover-entry__button--image" type="button" data-open-article="technology-workshop">
+                <img src="成果/建筑技术工坊/封面图片/屏幕截图 2026-05-29 175057.png" alt="Technology Workshop cover" />
+              </button>
+              <div class="caption">
+                <h2>Technology Workshop</h2>
+                <p>Technical portfolio and construction-related studies.</p>
+              </div>
+            </div>
+
+            <div class="article-content" data-article-content="technology-workshop">
+              <header class="article-header">
+                <p class="section-kicker">Workshop / 2025</p>
+                <h2>Technology Workshop</h2>
+                <p>Technical workshop output and construction-related studies.</p>
+              </header>
+              <div class="project-images">
+                <img src="成果/建筑技术工坊/Page_1_docsmall.com.jpg" alt="Technology Workshop page 1" loading="lazy" />
+                <img src="成果/建筑技术工坊/Page_2_docsmall.com.jpg" alt="Technology Workshop page 2" loading="lazy" />
+                <img src="成果/建筑技术工坊/Page_3_docsmall.com.jpg" alt="Technology Workshop page 3" loading="lazy" />
+                <img src="成果/建筑技术工坊/Page_4_docsmall.com.jpg" alt="Technology Workshop page 4" loading="lazy" />
+                <img src="成果/建筑技术工坊/Page_5_docsmall.com.jpg" alt="Technology Workshop page 5" loading="lazy" />
+                <img src="成果/建筑技术工坊/Page_6_docsmall.com.jpg" alt="Technology Workshop page 6" loading="lazy" />
+              </div>
+            </div>
+          </article>
+
+          <button class="collection-button collection-button--prev" type="button" data-collection-prev aria-label="Previous project">‹</button>
+          <button class="collection-button collection-button--next" type="button" data-collection-next aria-label="Next project">›</button>
         </div>
       </section>
 
-      <section id="contact" class="section contact-section reveal">
-        <div class="section-heading">
-          <p class="eyebrow">Contact</p>
-          <h2>Contact Me</h2>
+      <!-- Developer view -->
+      <section class="view page-view collection-view" id="developer" data-view="developer">
+        <div class="collection" data-collection="developer">
+          <article class="article is-current">
+            <div class="cover-entry">
+              <button class="cover-entry__button" type="button" data-open-article="website">
+                <span>Web / 2026</span>
+                <strong>Personal Website</strong>
+                <small>Open project</small>
+              </button>
+              <div class="caption">
+                <h2>Personal Website</h2>
+                <p>HTML, CSS, JavaScript, animation, and publishing.</p>
+              </div>
+            </div>
+
+            <div class="article-content is-open" data-article-content="website">
+              <header class="article-header">
+                <p class="section-kicker">Web / 2026</p>
+                <h2>Personal Website</h2>
+                <p>
+                  This site is the first ongoing experiment in HTML, CSS,
+                  JavaScript, animation, and publishing.
+                </p>
+              </header>
+            </div>
+          </article>
+
+          <article class="article">
+            <div class="cover-entry">
+              <button class="cover-entry__button" type="button" data-open-article="python-tools">
+                <span>Python / Later</span>
+                <strong>Python Tools</strong>
+                <small>Open project</small>
+              </button>
+              <div class="caption">
+                <h2>Python Tools</h2>
+                <p>Automation and small computational experiments.</p>
+              </div>
+            </div>
+
+            <div class="article-content" data-article-content="python-tools">
+              <header class="article-header">
+                <p class="section-kicker">Python / Later</p>
+                <h2>Python Tools</h2>
+                <p>A future place for Python tools, scripts, and experiments.</p>
+              </header>
+            </div>
+          </article>
+
+          <button class="collection-button collection-button--prev" type="button" data-collection-prev aria-label="Previous project">‹</button>
+          <button class="collection-button collection-button--next" type="button" data-collection-next aria-label="Next project">›</button>
         </div>
-        <p class="section-text">
-          Replace this area with your email, GitHub, Bilibili, Instagram, or any
-          other personal links.
-        </p>
-        <a class="text-link" href="https://github.com/">Open GitHub</a>
+      </section>
+
+      <!-- Thinker view -->
+      <section class="view page-view collection-view" id="thinker" data-view="thinker">
+        <div class="collection" data-collection="thinker">
+          <article class="article is-current">
+            <div class="cover-entry">
+              <button class="cover-entry__button" type="button" data-open-article="notes">
+                <span>Notes / Later</span>
+                <strong>Thought Archive</strong>
+                <small>Open project</small>
+              </button>
+              <div class="caption">
+                <h2>Thought Archive</h2>
+                <p>Writing, observation, cities, memory, and fragments.</p>
+              </div>
+            </div>
+
+            <div class="article-content is-open" data-article-content="notes">
+              <header class="article-header">
+                <p class="section-kicker">Notes / Later</p>
+                <h2>Thought Archive</h2>
+                <p>
+                  A future home for essays, city observations, reading notes,
+                  and unfinished ideas.
+                </p>
+              </header>
+            </div>
+          </article>
+
+          <article class="article">
+            <div class="cover-entry">
+              <button class="cover-entry__button" type="button" data-open-article="city-notes">
+                <span>City / Later</span>
+                <strong>City Notes</strong>
+                <small>Open project</small>
+              </button>
+              <div class="caption">
+                <h2>City Notes</h2>
+                <p>Fragments about streets, rooms, memory, and daily life.</p>
+              </div>
+            </div>
+
+            <div class="article-content" data-article-content="city-notes">
+              <header class="article-header">
+                <p class="section-kicker">City / Later</p>
+                <h2>City Notes</h2>
+                <p>Fragments about streets, rooms, memory, and daily life.</p>
+              </header>
+            </div>
+          </article>
+
+          <button class="collection-button collection-button--prev" type="button" data-collection-prev aria-label="Previous project">‹</button>
+          <button class="collection-button collection-button--next" type="button" data-collection-next aria-label="Next project">›</button>
+        </div>
       </section>
     </main>
   </body>
