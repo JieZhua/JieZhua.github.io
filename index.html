@@ -4,7 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JieZhua</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/radical-sections.css" />
+    <link rel="stylesheet" href="css/works-coverflow.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -61,8 +67,17 @@
         </section>
 
         <!-- About section -->
-        <section class="page-section about-section reveal-section" id="about">
-          <div class="section-inner">
+        <section
+          class="page-section about-section radical-layout radical-layout--panel-left reveal-section"
+          id="about"
+        >
+          <div
+            class="radical-mark radical-mark--word about-mark"
+            aria-hidden="true"
+          >
+            ZHJ
+          </div>
+          <div class="section-inner radical-panel">
             <p class="section-kicker">About</p>
             <h1>Welcome to my website. My name is Zhu Huajie.</h1>
             <p>
@@ -77,48 +92,95 @@
 
         <!-- Identity cards section -->
         <section class="identity-section" id="identity">
-          <article class="identity-card reveal-section">
-            <span>01</span>
-            <h2><span>I am a</span>Designer</h2>
-            <p>
-              I design through proportion, light, structure, and atmosphere,
-              moving from classical spatial research to measured drawings,
-              models, digital reconstruction, and portfolio narratives.
-            </p>
+          <article
+            class="identity-card identity-card--designer radical-layout radical-layout--panel-right reveal-section"
+          >
+            <div
+              class="radical-mark identity-graphic identity-graphic--designer"
+              aria-hidden="true"
+            >
+              <span>01</span>
+            </div>
+            <div class="identity-panel radical-panel">
+              <span class="identity-index">01</span>
+              <h2><span>I am a</span>Designer</h2>
+              <p>
+                I design through proportion, light, structure, and atmosphere,
+                moving from classical spatial research to measured drawings,
+                models, digital reconstruction, and portfolio narratives.
+              </p>
+            </div>
           </article>
 
-          <article class="identity-card reveal-section">
-            <span>02</span>
-            <h2><span>I am a</span>Developer</h2>
-            <p>
-              I use Python, C, algorithms, data structures, and computer vision
-              as tools for thinking, automation, and building clearer links
-              between spatial information and digital workflows.
-            </p>
+          <article
+            class="identity-card identity-card--developer radical-layout radical-layout--panel-left reveal-section"
+          >
+            <div
+              class="radical-mark identity-graphic identity-graphic--developer"
+              aria-hidden="true"
+            >
+              <div class="terminal-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <code>const role = "02";</code>
+              <code>build(clearSystems);</code>
+              <strong>Developer</strong>
+            </div>
+            <div class="identity-panel radical-panel">
+              <span class="identity-index">02</span>
+              <h2><span>I am a</span>Developer</h2>
+              <p>
+                I use Python, C, algorithms, data structures, and computer
+                vision as tools for thinking, automation, and building clearer
+                links between spatial information and digital workflows.
+              </p>
+            </div>
           </article>
 
-          <article class="identity-card reveal-section">
-            <span>03</span>
-            <h2><span>I am a</span>Thinker</h2>
-            <p>
-              I observe how rooms, streets, images, and systems shape movement
-              and memory, turning architectural thinking into notes on cities,
-              visual culture, and everyday experience.
-            </p>
+          <article
+            class="identity-card identity-card--thinker radical-layout radical-layout--panel-right reveal-section"
+          >
+            <div
+              class="radical-mark identity-graphic identity-graphic--thinker"
+              aria-hidden="true"
+            >
+              <span>03</span>
+              <small>notes / cities / memory</small>
+            </div>
+            <div class="identity-panel radical-panel">
+              <span class="identity-index">03</span>
+              <h2><span>I am a</span>Thinker</h2>
+              <p>
+                I observe how rooms, streets, images, and systems shape movement
+                and memory, turning architectural thinking into notes on cities,
+                visual culture, and everyday experience.
+              </p>
+            </div>
           </article>
         </section>
 
         <!-- Works teaser section -->
-        <section class="page-section works-section reveal-section" id="works">
+        <section
+          class="page-section works-section radical-layout radical-layout--panel-left reveal-section"
+          id="works"
+        >
           <div class="section-inner">
-            <p class="section-kicker">Works</p>
-            <h2>
-              All works, thoughts, and experiments begin from the archive.
-            </h2>
-            <p>
-              This cover flow is the central index for architectural projects,
-              code experiments, essays, research notes, and other outcomes.
-            </p>
+            <div class="radical-mark radical-mark--word works-mark" aria-hidden="true">
+              WORKS
+            </div>
+            <div class="works-copy radical-panel">
+              <p class="section-kicker">Works</p>
+              <h2 class="works-title">
+                <span>Talk is easy.</span>
+                <span>Show me the code</span>
+              </h2>
+              <p>
+                This cover flow is the central index for architectural projects,
+                code experiments, essays, research notes, and other outcomes.
+              </p>
+            </div>
 
             <div class="coverflow" data-coverflow aria-label="Works cover flow">
               <button
