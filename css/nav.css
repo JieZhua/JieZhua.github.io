@@ -1,0 +1,61 @@
+/* Top index navigation */
+.index-bar {
+  position: fixed; /* 让索引行固定在页面顶部 */
+  top: 0; /* 固定在顶部 */
+  left: 0; /* 固定在左侧 */
+  z-index: 100; /* 让索引行始终压在普通内容上方 */
+  display: flex; /* 让标题和导航横向排列 */
+  align-items: center; /* 让标题和导航垂直对齐 */
+  justify-content: space-between; /* 标题在左，导航在右 */
+  gap: 24px; /* 设置标题和导航之间的最小间距 */
+  width: 100%; /* 让顶部索引行占满页面宽度 */
+  padding: 16px 20px; /* 让索引行更贴近左上角 */
+  background: #f6f3ec; /* 遮住下面滚动过去的文字，避免导航和正文重叠 */
+  opacity: 0; /* 初始隐藏顶部索引行 */
+  animation: index-arrive 900ms ease 2.65s both; /* 让顶部索引行在 WELCOME 到位后慢慢淡入 */
+}
+
+.index-title {
+  display: flex; /* 让 WELCOME 和域名横向排布 */
+  flex-wrap: wrap; /* 屏幕窄时允许域名换到下一行 */
+  align-items: baseline; /* 让两段文字按基线对齐 */
+  gap: 8px; /* 设置 WELCOME 和域名之间的距离 */
+  font-size: 22px; /* 设置左上角 WELCOME 的大小 */
+  font-weight: 700; /* 让左上角 WELCOME 加粗 */
+}
+
+.index-domain {
+  color: #35415a; /* 让域名带一点蓝灰色，更适合黑白建筑感 */
+  font-size: 14px; /* 让域名字号小一点 */
+  font-weight: 400; /* 让域名字重轻一点 */
+  white-space: nowrap; /* 防止域名在中间断行 */
+}
+
+.index-domain.is-ready span {
+  display: inline-block; /* 让每个字母都能单独做动画 */
+  opacity: 0; /* 初始隐藏每个字母 */
+  transform: translateY(14px) rotate(-7deg) scale(0.88); /* 初始让字母分散在下方 */
+  animation: letter-wave 720ms cubic-bezier(0.2, 1.45, 0.35, 1)
+    calc(5s + var(--i) * 50ms) both; /* 让字母按顺序波浪弹出 */
+}
+
+.index-domain.is-ready span:nth-child(even) {
+  transform: translateY(-10px) rotate(6deg) scale(0.88); /* 让偶数字母从上方弹出，形成波浪 */
+}
+
+.index-nav {
+  display: flex; /* 让导航链接横向排布 */
+  flex-wrap: wrap; /* 屏幕窄时允许导航换行 */
+  justify-content: flex-end; /* 让导航整体靠右 */
+  gap: 18px; /* 设置导航链接之间的距离 */
+  color: #111111; /* 设置导航链接颜色 */
+  font-size: 14px; /* 设置导航链接字号 */
+}
+
+.index-nav a:hover {
+  color: #35415a; /* 鼠标放到导航链接上时变成蓝灰色 */
+}
+
+.index-nav a.is-active {
+  font-style: italic; /* 标记当前正在看的页面 */
+}

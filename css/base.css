@@ -1,0 +1,135 @@
+/* Base */
+* {
+  box-sizing: border-box; /* 让 width 和 height 包含 padding 与 border，尺寸更好算 */
+}
+
+html {
+  scroll-behavior: smooth; /* 点击锚点链接时平滑滚动 */
+}
+
+body {
+  margin: 0; /* 去掉浏览器默认外边距 */
+  background: #f6f3ec; /* 设置页面暖白色背景 */
+  color: #111111; /* 设置页面默认文字颜色 */
+  font-family: Arial, sans-serif; /* 设置全站默认字体 */
+}
+
+a {
+  color: inherit; /* 链接使用父元素的文字颜色 */
+  text-decoration: none; /* 去掉链接默认下划线 */
+}
+
+button {
+  border: 0; /* 去掉按钮默认边框 */
+  background: transparent; /* 去掉按钮默认背景 */
+  color: inherit; /* 让按钮继承文字颜色 */
+  cursor: pointer; /* 让按钮显示可点击状态 */
+}
+
+
+/* View system */
+.view {
+  display: none; /* 默认隐藏所有页面视图 */
+}
+
+.view.is-active {
+  display: block; /* 只显示当前被选中的页面视图 */
+}
+
+
+/* Reveal on scroll */
+.reveal-section {
+  opacity: 0; /* 初始隐藏滚动出现区块 */
+  transform: translateY(44px); /* 初始让区块稍微向下 */
+  transition:
+    opacity 900ms ease,
+    transform 900ms ease; /* 控制浮现动画 */
+}
+
+.reveal-section.is-visible {
+  opacity: 1; /* 滚动到视口后显示 */
+  transform: translateY(0); /* 滚动到视口后回到原位 */
+}
+
+/* Animations */
+@keyframes welcome-to-corner {
+  from {
+    top: 50%; /* 动画开始时 WELCOME 在屏幕垂直中间 */
+    left: 50%; /* 动画开始时 WELCOME 在屏幕水平中间 */
+    font-size: clamp(56px, 12vw, 180px); /* 动画开始时 WELCOME 是大字 */
+    transform: translate(-50%, -50%); /* 动画开始时让 WELCOME 真正居中 */
+  }
+
+  to {
+    top: 16px; /* 动画结束时 WELCOME 更靠近顶部 */
+    left: 20px; /* 动画结束时 WELCOME 更靠近左边 */
+    font-size: 22px; /* 动画结束时 WELCOME 缩小成索引行大小 */
+    transform: translate(0, 0); /* 动画结束时取消居中偏移 */
+  }
+}
+
+@keyframes intro-lift {
+  from {
+    transform: translateY(0); /* 动画开始时黑色幕布覆盖屏幕 */
+  }
+
+  to {
+    transform: translateY(-100%); /* 动画结束时黑色幕布向上移出屏幕 */
+  }
+}
+
+@keyframes index-arrive {
+  from {
+    opacity: 0; /* 动画开始时不可见 */
+  }
+
+  to {
+    opacity: 1; /* 动画结束时可见 */
+  }
+}
+
+@keyframes letter-wave {
+  from {
+    opacity: 0; /* 动画开始时字母不可见 */
+  }
+
+  70% {
+    opacity: 1; /* 动画中段字母已经可见 */
+    transform: translateY(-4px) rotate(0deg) scale(1.12); /* 字母稍微越过正常位置，形成弹性 */
+  }
+
+  to {
+    opacity: 1; /* 动画结束时字母保持可见 */
+    transform: translateY(0) rotate(0deg) scale(1); /* 字母回到正常位置 */
+  }
+}
+
+@keyframes draw-hello {
+  0% {
+    opacity: 0; /* 动画开始瞬间隐藏，避免圆形线帽露点 */
+    stroke-dashoffset: 1.08; /* 动画开始时路径不可见 */
+  }
+
+  3% {
+    opacity: 1; /* 路径开始移动后再显示线条 */
+    stroke-dashoffset: 1.06; /* 先推进一点点，避免只露出端点 */
+  }
+
+  100% {
+    opacity: 1; /* 动画结束后保持可见 */
+    stroke-dashoffset: 0; /* 动画结束时路径完整显示 */
+  }
+}
+
+@keyframes scroll-line {
+  0%,
+  100% {
+    transform: scaleY(0.65); /* 动画开始和结束时线条稍短 */
+    transform-origin: top; /* 让线条从顶部开始缩放 */
+  }
+
+  50% {
+    transform: scaleY(1); /* 动画中间线条恢复完整高度 */
+  }
+}
+

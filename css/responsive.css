@@ -1,0 +1,118 @@
+/* Responsive */
+@media (max-width: 700px) {
+  .index-bar {
+    align-items: flex-start; /* 小屏幕下让索引内容靠上对齐 */
+    flex-direction: column; /* 小屏幕下让标题和导航上下排列 */
+  }
+
+  .index-nav {
+    justify-content: flex-start; /* 小屏幕下让导航靠左 */
+  }
+
+  .identity-card {
+    padding: 100px 24px; /* 小屏幕下减少卡片左右边距 */
+  }
+
+  .about-section {
+    padding: 100px 24px; /* 小屏幕下与身份卡保持同一边距 */
+  }
+
+  .about-section,
+  .identity-card {
+    grid-template-columns: 1fr; /* 小屏幕下黑条和图形改为上下关系 */
+  }
+
+  .about-section .section-inner,
+  .identity-panel {
+    grid-column: 1; /* 小屏幕下黑条占满可用宽度 */
+  }
+
+  .radical-mark {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    margin-bottom: -8px;
+    font-size: clamp(86px, 28vw, 160px);
+    transform: translateX(-42px) scale(0.96);
+  }
+
+  .identity-card .radical-mark {
+    left: auto;
+  }
+
+  .radical-layout--panel-left .radical-mark,
+  .identity-card--developer .radical-mark {
+    right: auto;
+    left: auto;
+    text-align: left;
+    transform: translateX(42px) scale(0.96);
+  }
+
+  .radical-panel {
+    padding: 32px 24px;
+    box-shadow: -10px 12px 0 rgba(0, 0, 0, 0.12);
+    transform: translateX(44px);
+  }
+
+  .radical-layout--panel-left .radical-panel {
+    box-shadow: 10px 12px 0 rgba(0, 0, 0, 0.12);
+    transform: translateX(-44px);
+  }
+
+  .identity-graphic--designer,
+  .identity-graphic--developer,
+  .identity-graphic--thinker {
+    width: min(100%, 360px);
+  }
+
+  .identity-graphic--developer {
+    min-height: 220px;
+    padding: 22px;
+  }
+
+  .works-mark {
+    top: auto;
+  }
+
+  .reveal-section.is-visible .radical-mark {
+    transform: translateX(0) scale(1);
+  }
+
+  .works-title span {
+    white-space: normal; /* 小屏幕太窄时允许自然换行，避免文字溢出 */
+  }
+
+  .contact-bar {
+    align-items: flex-start; /* 小屏幕下联系栏内容靠上对齐 */
+    flex-direction: column; /* 小屏幕下联系栏变成上下排列 */
+  }
+
+  .contact-items {
+    justify-content: flex-start; /* 小屏幕下联系方式靠左 */
+  }
+
+  .page-view {
+    padding-top: 150px; /* 小屏幕导航变高，所以页面内容往下移 */
+  }
+
+  .coverflow {
+    height: 260px; /* 小屏幕下转盘区域稍微矮一点 */
+  }
+
+  .coverflow-card {
+    width: 150px; /* 小屏幕下缩小转盘封面 */
+  }
+
+  .cover-entry__button {
+    width: min(100%, 360px); /* 小屏幕下缩小项目封面 */
+  }
+
+  .collection-button--prev {
+    left: -8px; /* 小屏幕下把上一项按钮收回屏幕内 */
+  }
+
+  .collection-button--next {
+    right: -8px; /* 小屏幕下把下一项按钮收回屏幕内 */
+  }
+}

@@ -1,0 +1,197 @@
+/* Inner pages */
+.page-view {
+  min-height: 100vh; /* 让每个独立页面至少占满一屏 */
+  padding: 120px 20px 80px; /* 给固定导航和页面内容留出空间 */
+}
+
+.view-shell {
+  width: 100%; /* 让内容容器在小屏幕占满可用宽度 */
+  max-width: 1080px; /* 限制大屏幕内容宽度 */
+  margin: 0 auto; /* 让内容容器水平居中 */
+}
+
+.view-shell h1 {
+  max-width: 900px; /* 避免标题在大屏幕上太长 */
+  margin: 0 0 24px; /* 设置页面标题下方距离 */
+  font-size: clamp(48px, 9vw, 132px); /* 设置页面大标题大小 */
+  font-weight: 400; /* 让标题保持轻盈 */
+  line-height: 0.98; /* 让大标题更紧凑 */
+}
+
+.view-shell > p {
+  max-width: 620px; /* 限制页面说明文字宽度 */
+  color: #35415a; /* 设置页面说明文字颜色 */
+  font-size: 19px; /* 设置页面说明文字大小 */
+  line-height: 1.7; /* 设置页面说明文字行高 */
+}
+
+.text-link,
+.project-link {
+  display: inline-block; /* 让链接可以拥有上下间距 */
+  margin-top: 22px; /* 设置链接和上方文字的距离 */
+  border-bottom: 1px solid #111111; /* 给链接加细下划线 */
+  padding-bottom: 4px; /* 让下划线和文字分开一点 */
+}
+
+
+/* Collection pages */
+.collection {
+  position: relative; /* 给左右切换按钮提供定位参照 */
+  width: 100%; /* 让 collection 占满可用宽度 */
+  max-width: 1120px; /* 给建筑作品图留出更宽的展示空间 */
+  margin: 0 auto; /* 让 collection 居中 */
+}
+
+.collection > .article {
+  display: none; /* 默认隐藏 collection 里的项目 */
+}
+
+.collection > .article.is-current {
+  display: block; /* 只显示当前项目 */
+}
+
+.cover-entry {
+  display: flex; /* 让项目封面和说明可以纵向排列 */
+  min-height: calc(100vh - 160px); /* 让项目封面区域接近一屏 */
+  flex-direction: column; /* 让封面和说明上下排列 */
+  justify-content: center; /* 让封面区域垂直居中 */
+  text-align: center; /* 让封面说明居中 */
+}
+
+.cover-entry__button {
+  display: flex; /* 让封面按钮内部文字上下排列 */
+  width: min(100%, 520px); /* 限制封面按钮最大宽度 */
+  aspect-ratio: 1 / 1; /* 让封面按钮保持正方形 */
+  flex-direction: column; /* 让封面按钮文字上下排列 */
+  justify-content: space-between; /* 让文字分布在封面上下 */
+  margin: 0 auto; /* 让封面按钮居中 */
+  border: 1px solid #111111; /* 设置封面按钮边框 */
+  background: #f6f3ec; /* 设置封面按钮背景 */
+  box-shadow: 0 22px 64px rgba(0, 0, 0, 0.12); /* 给封面按钮一点浮起感 */
+  font-family: inherit; /* 让按钮继承网页字体 */
+  padding: 28px; /* 设置封面按钮内部留白 */
+  text-align: left; /* 让封面按钮文字靠左 */
+  transition:
+    background 220ms ease,
+    color 220ms ease,
+    transform 220ms ease; /* 控制封面按钮 hover 动画 */
+}
+
+.cover-entry__button:hover {
+  background: #111111; /* 鼠标放上去时变成黑底 */
+  color: #f6f3ec; /* 鼠标放上去时文字变成暖白 */
+  transform: scale(1.018); /* 鼠标放上去时轻微放大 */
+}
+
+.cover-entry__button--image {
+  overflow: hidden; /* 图片超出大封面时裁掉 */
+  padding: 0; /* 图片大封面不需要文字留白 */
+}
+
+.cover-entry__button--image img {
+  display: block; /* 去掉图片底部默认空隙 */
+  width: 100%; /* 图片占满大封面宽度 */
+  height: 100%; /* 图片占满大封面高度 */
+  filter: grayscale(1); /* 默认黑白，和主页转盘保持一致 */
+  object-fit: cover; /* 让图片像作品封面一样裁切铺满 */
+  transition:
+    filter 220ms ease,
+    transform 220ms ease; /* 控制大封面 hover 动画 */
+}
+
+.cover-entry__button--image:hover img {
+  filter: grayscale(0); /* 鼠标放上去时恢复彩色 */
+  transform: scale(1.035); /* 鼠标放上去时图片轻微放大 */
+}
+
+.cover-entry__button span,
+.cover-entry__button small {
+  font-size: 14px; /* 设置封面辅助文字大小 */
+  letter-spacing: 0.06em; /* 让辅助文字更像索引 */
+  text-transform: uppercase; /* 让辅助文字大写 */
+}
+
+.cover-entry__button strong {
+  font-size: clamp(42px, 9vw, 86px); /* 设置封面主标题大小 */
+  font-weight: 400; /* 让封面主标题保持轻 */
+  line-height: 0.98; /* 控制封面主标题行高 */
+}
+
+.caption {
+  margin-top: 22px; /* 设置封面和说明之间的距离 */
+}
+
+.caption h2 {
+  margin: 0 0 8px; /* 设置说明标题间距 */
+  font-size: 18px; /* 设置说明标题大小 */
+  font-style: italic; /* 模仿你同学页面的斜体说明 */
+  font-weight: 400; /* 让说明标题更轻 */
+}
+
+.caption p {
+  margin: 0; /* 去掉说明段落默认外边距 */
+  color: #35415a; /* 设置说明段落颜色 */
+}
+
+.article-content {
+  display: none; /* 默认隐藏项目正文 */
+  padding: 24px 0 80px; /* 给项目正文留出上下空间 */
+  text-align: center; /* 让项目正文居中 */
+}
+
+.article-content.is-open {
+  display: block; /* 打开的项目正文显示出来 */
+}
+
+.article-header h2 {
+  margin: 0 0 18px; /* 设置项目正文标题间距 */
+  font-size: clamp(42px, 8vw, 96px); /* 设置项目正文标题大小 */
+  font-weight: 400; /* 让项目正文标题更轻 */
+  line-height: 1; /* 控制项目正文标题行高 */
+}
+
+.article-header p:not(.section-kicker) {
+  max-width: 620px; /* 限制正文介绍宽度 */
+  margin: 0 auto; /* 让正文介绍居中 */
+  color: #35415a; /* 设置正文介绍颜色 */
+  font-size: 18px; /* 设置正文介绍大小 */
+  line-height: 1.7; /* 设置正文介绍行高 */
+}
+
+.project-images {
+  display: grid; /* 让作品页图片纵向排列 */
+  gap: 28px; /* 设置每张作品图之间的距离 */
+  width: 100%; /* 让作品图片区域占满可用宽度 */
+  margin: 48px auto 0; /* 拉开正文标题和作品图 */
+}
+
+.project-images img {
+  display: block; /* 去掉图片底部默认空隙 */
+  width: 100%; /* 让作品图适应页面宽度 */
+  height: auto; /* 保持图片原始比例 */
+  background: #ffffff; /* 图片加载前有白色底 */
+  box-shadow: 0 18px 52px rgba(0, 0, 0, 0.12); /* 给作品图一点纸张浮起感 */
+}
+
+.collection-button {
+  position: absolute; /* 让左右按钮贴着 collection 两侧 */
+  z-index: 5; /* 让左右按钮压在项目封面上面 */
+  top: calc((100vh - 160px) / 2); /* 让按钮垂直对齐封面区域中间 */
+  width: 44px; /* 设置按钮宽度 */
+  height: 44px; /* 设置按钮高度 */
+  color: #111111; /* 设置按钮颜色 */
+  font-family: inherit; /* 让按钮继承网页字体 */
+  font-size: 42px; /* 设置箭头大小 */
+  font-style: italic; /* 模仿你同学页面的箭头风格 */
+  line-height: 1; /* 控制箭头行高 */
+  transform: translateY(-50%); /* 修正垂直居中 */
+}
+
+.collection-button--prev {
+  left: -64px; /* 把上一项按钮放到左侧 */
+}
+
+.collection-button--next {
+  right: -64px; /* 把下一项按钮放到右侧 */
+}
+

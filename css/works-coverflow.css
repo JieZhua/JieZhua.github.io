@@ -1,0 +1,91 @@
+/* Works cover flow */
+.coverflow {
+  position: relative; /* 给绝对定位的封面卡片提供参照 */
+  height: clamp(300px, 42vh, 460px); /* 设置转盘区域高度 */
+  margin-top: 64px; /* 拉开说明文字和转盘的距离 */
+  overflow: hidden; /* 隐藏转盘边缘多余卡片 */
+  cursor: grab; /* 提示这个区域可以拖动 */
+  perspective: 1000px; /* 给封面旋转制造 3D 深度 */
+  touch-action: pan-y; /* 保留手机上下滚动手势 */
+  user-select: none; /* 拖动时不要选中文字 */
+}
+
+.coverflow.is-dragging {
+  cursor: grabbing; /* 拖动中改变鼠标状态 */
+}
+
+.coverflow-card {
+  position: absolute; /* 让所有卡片叠在转盘舞台里 */
+  top: 18px; /* 控制卡片距离转盘顶部的位置 */
+  left: 50%; /* 先把卡片放到水平中线 */
+  z-index: var(--z); /* 让中间卡片压在两侧卡片上面 */
+  display: flex; /* 让卡片内部文字可以上下排布 */
+  width: clamp(170px, 23vw, 280px); /* 设置封面卡片大小 */
+  aspect-ratio: 1 / 1; /* 让卡片保持正方形 */
+  flex-direction: column; /* 让卡片内容上下排布 */
+  justify-content: space-between; /* 让分类、标题、身份分布在上下 */
+  border: 1px solid #111111; /* 设置封面边框 */
+  background: #f6f3ec; /* 设置封面背景 */
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.14); /* 给封面一点浮起感 */
+  font-family: inherit; /* 让按钮继承网页字体 */
+  opacity: var(--opacity); /* JS 控制远处卡片透明度 */
+  padding: 20px; /* 设置封面内部留白 */
+  text-align: left; /* 让封面文字靠左 */
+  transform: translateX(calc(-50% + var(--x))) rotateY(var(--rotate))
+    scale(var(--scale)); /* JS 控制卡片位置、旋转、大小 */
+  transform-style: preserve-3d; /* 保留 3D 旋转效果 */
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease; /* 控制转盘移动动画 */
+  -webkit-box-reflect: below 10px
+    linear-gradient(transparent 55%, rgba(246, 243, 236, 0.24)); /* 模仿 Apple Cover Flow 的倒影 */
+}
+
+.coverflow-card:hover {
+  background: #111111; /* 鼠标放上去时变成黑底 */
+  color: #f6f3ec; /* 鼠标放上去时文字变成暖白 */
+}
+
+.coverflow-card--image {
+  overflow: hidden; /* 图片超出封面时裁掉 */
+  padding: 0; /* 图片封面不需要文字留白 */
+}
+
+.coverflow-card--image img {
+  display: block; /* 去掉图片底部默认空隙 */
+  width: 100%; /* 图片占满封面宽度 */
+  height: 100%; /* 图片占满封面高度 */
+  filter: grayscale(1); /* 默认黑白，保持整体风格统一 */
+  object-fit: cover; /* 让图片像封面一样裁切铺满 */
+  pointer-events: none; /* 让鼠标拖动作用在卡片上，而不是图片本身 */
+  transition:
+    filter 220ms ease,
+    transform 220ms ease; /* 控制图片 hover 动画 */
+  user-select: none; /* 禁止拖动时选中图片 */
+  -webkit-user-drag: none; /* 禁止浏览器把图片当成可拖拽文件 */
+}
+
+.coverflow-card--image:hover img {
+  filter: grayscale(0); /* 鼠标放上去时恢复彩色 */
+  transform: scale(1.04); /* 鼠标放上去时图片轻微放大 */
+}
+
+.coverflow-card span,
+.coverflow-card small {
+  font-size: 13px; /* 设置封面辅助文字大小 */
+  letter-spacing: 0.06em; /* 让辅助文字更像索引 */
+  text-transform: uppercase; /* 让辅助文字大写 */
+}
+
+.coverflow-card strong {
+  font-size: clamp(30px, 4vw, 48px); /* 设置封面主标题大小 */
+  font-weight: 400; /* 让封面主标题不太厚重 */
+  line-height: 1; /* 控制封面主标题行高 */
+}
+
+.coverflow-title {
+  min-height: 24px; /* 防止标题变化时页面跳动 */
+  margin-top: 12px; /* 设置标题和转盘之间的距离 */
+  color: #35415a; /* 设置当前封面标题颜色 */
+  text-align: center; /* 让当前封面标题居中 */
+}

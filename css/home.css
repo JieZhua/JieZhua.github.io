@@ -1,0 +1,123 @@
+/* Intro / opening animation */
+.intro-screen {
+  position: fixed; /* 让黑色开场层固定覆盖整个屏幕 */
+  inset: 0; /* 让开场层上下左右都贴住屏幕边缘 */
+  z-index: 200; /* 让开场层盖在页面和导航上面 */
+  overflow: hidden; /* 避免动画移动时出现多余内容 */
+  background: #050505; /* 设置开场背景为黑色 */
+  pointer-events: none; /* 让开场层不阻挡鼠标操作 */
+  animation: intro-lift 1800ms cubic-bezier(0.78, 0, 0.2, 1) 3s both; /* 3 秒后黑色幕布慢慢向上拉起 */
+}
+
+.intro-word {
+  position: fixed; /* 让 WELCOME 可以相对屏幕移动 */
+  top: 50%; /* 开始时放在屏幕垂直中间 */
+  left: 50%; /* 开始时放在屏幕水平中间 */
+  color: #ffffff; /* 开场时 WELCOME 是白色 */
+  font-size: clamp(56px, 12vw, 180px); /* 让 WELCOME 在不同屏幕上自适应大小 */
+  font-weight: 700; /* 让 WELCOME 加粗 */
+  line-height: 1; /* 减少文字上下多余空间 */
+  transform: translate(-50%, -50%); /* 配合 top 和 left，让文字真正居中 */
+  animation: welcome-to-corner 1800ms cubic-bezier(0.76, 0, 0.24, 1) 900ms both; /* 0.9 秒后 WELCOME 慢慢移动到左上角 */
+}
+
+
+/* Home hello section */
+.home-stage {
+  display: grid; /* 使用网格控制 hello 和 scroll hint */
+  min-height: 100vh; /* 让首页占满一屏 */
+  place-items: center; /* 让 hello 在屏幕中间 */
+  position: relative; /* 给 scroll hint 提供定位参照 */
+}
+
+.hello-svg {
+  width: min(82vw, 638px); /* 使用原始 hello 宽度比例，避免末尾被裁切 */
+  height: auto; /* 让 SVG 高度按比例变化 */
+  overflow: visible; /* 允许线条端点超出 viewBox 一点点 */
+}
+
+.hello-path {
+  fill: none; /* 不填充形状，只显示线条 */
+  opacity: 0; /* 动画真正写出前保持透明，避免起笔黑点 */
+  stroke: #111111; /* 设置 hello 线条颜色 */
+  stroke-dasharray: 1.08; /* 比完整路径略长，避免末尾包裹闪现 */
+  stroke-dashoffset: 1.08; /* 初始把整条线推到路径外面 */
+  stroke-linecap: round; /* 让线条两端变圆 */
+  stroke-linejoin: round; /* 让线条转角变圆 */
+  stroke-width: 14.8883; /* 使用你朋友 SVG 的原始线条粗细 */
+}
+
+.hello-path-first {
+  animation: draw-hello 1300ms ease-in-out 7s both; /* 控制 hello 第一段的书写速度和开始时间 */
+}
+
+.hello-path-rest {
+  animation: draw-hello 4600ms ease-in-out 8s both; /* 控制 hello 剩余部分的书写速度和开始时间 */
+}
+
+body.home-hello-complete .hello-path {
+  animation: none; /* 回到 Home 时不重新播放 hello 书写动画 */
+  opacity: 1; /* 让 hello 直接保持可见 */
+  stroke-dashoffset: 0; /* 让 hello 直接显示完整路径 */
+}
+
+/* Scroll hint */
+.scroll-hint {
+  position: absolute; /* 固定在首页底部区域 */
+  bottom: 36px; /* 距离底部 36px */
+  left: 50%; /* 水平定位到中间 */
+  display: flex; /* 让文字和线条竖向排列 */
+  flex-direction: column; /* 让 Scroll 和线条上下排列 */
+  align-items: center; /* 让文字和线条居中 */
+  gap: 10px; /* 设置文字和线条之间的距离 */
+  color: #35415a; /* 使用蓝灰色提示滚动 */
+  font-size: 12px; /* 设置提示文字较小 */
+  letter-spacing: 0.08em; /* 让提示文字更有呼吸感 */
+  opacity: 0; /* 初始隐藏 */
+  text-transform: uppercase; /* 把提示文字转成大写风格 */
+  transform: translateX(-50%); /* 修正 left 50% 带来的偏移 */
+  animation: index-arrive 900ms ease 12s both; /* hello 写完后再出现 */
+}
+
+body.home-hello-complete .scroll-hint {
+  animation: none; /* 回到 Home 时不重新等待 Scroll 提示动画 */
+  opacity: 1; /* 让 Scroll 提示直接显示 */
+}
+
+.scroll-line {
+  width: 1px; /* 细线宽度 */
+  height: 42px; /* 细线高度 */
+  background: #35415a; /* 细线颜色 */
+  animation: scroll-line 1400ms ease-in-out infinite; /* 让细线轻微上下运动 */
+}
+
+
+/* Contact bar */
+.contact-bar {
+  display: flex; /* 让 Contact 标题和联系内容横向排列 */
+  align-items: center; /* 让联系栏内容垂直居中 */
+  justify-content: space-between; /* 让标题在左，联系内容在右 */
+  gap: 24px; /* 设置左右内容之间的距离 */
+  margin: 0 20px 20px; /* 让联系栏贴近页面底部但保留边距 */
+  background: #f6f3ec; /* 让联系栏背景和页面一致 */
+  padding: 16px 20px; /* 设置联系栏内部留白 */
+}
+
+.contact-bar > span {
+  font-size: 22px; /* 让 Contact 像顶部 WELCOME 一样有索引感 */
+  font-weight: 700; /* 加粗 Contact 标题 */
+}
+
+.contact-items {
+  display: flex; /* 让联系方式横向排列 */
+  flex-wrap: wrap; /* 小屏幕下允许联系方式换行 */
+  justify-content: flex-end; /* 让联系方式靠右 */
+  gap: 18px; /* 设置联系方式之间的距离 */
+  color: #35415a; /* 设置联系方式颜色 */
+  font-size: 14px; /* 设置联系方式字号 */
+}
+
+.contact-items a:hover {
+  color: #111111; /* 鼠标放到链接上时变深 */
+}
+

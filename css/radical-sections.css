@@ -1,0 +1,320 @@
+/* About section */
+.page-section {
+  display: grid; /* 使用网格方便内容居中 */
+  min-height: 100vh; /* 每个大区块占一屏 */
+  padding: 120px 20px; /* 给内容留出上下左右空间 */
+  place-items: center; /* 让内容在区块中间 */
+}
+
+.about-section {
+  position: relative; /* 给左侧大字图形提供定位参照 */
+  overflow: hidden; /* 隐藏大字图形超出屏幕的部分 */
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 34vw);
+  align-items: center; /* 保持 About 垂直居中 */
+  padding: 120px 8vw 120px 0; /* About 的黑条放左边，大字放右边 */
+  place-items: center stretch; /* 垂直居中，让黑色信息条横向展开 */
+}
+
+.section-inner {
+  max-width: 860px; /* 限制文字最大宽度 */
+  width: 100%; /* 让内容在小屏幕上占满可用宽度 */
+}
+
+.section-kicker {
+  margin: 0 0 22px; /* 设置小标题和主标题之间的距离 */
+  color: #35415a; /* 设置小标题颜色 */
+  font-size: 14px; /* 设置小标题字号 */
+  text-transform: uppercase; /* 小标题使用大写 */
+}
+
+.about-section h1 {
+  margin: 0 0 28px; /* 设置主介绍和段落之间的距离 */
+  font-size: clamp(42px, 7vw, 96px); /* 让介绍标题自适应屏幕 */
+  font-weight: 400; /* 让标题更轻，更有建筑作品集感 */
+  line-height: 1.05; /* 控制大标题行高 */
+}
+
+.section-inner p {
+  max-width: 620px; /* 限制正文宽度 */
+  color: #35415a; /* 设置正文为蓝灰色 */
+  font-size: 19px; /* 设置正文大小 */
+  line-height: 1.7; /* 设置正文行高 */
+}
+
+/* Identity cards */
+.identity-section {
+  display: grid; /* 让三张卡片按纵向滚动排列 */
+}
+
+.identity-card {
+  position: relative; /* 给左侧大号编号提供定位参照 */
+  overflow: hidden; /* 隐藏编号超出屏幕的部分 */
+  display: grid; /* 使用左右结构：图形在左，文字条在右 */
+  grid-template-columns: minmax(180px, 34vw) minmax(0, 1fr);
+  align-items: center; /* 让文字条垂直居中 */
+  min-height: 100vh; /* 每张卡片占一屏 */
+  padding: 120px 0 120px 8vw; /* 右侧黑条可以贴近屏幕边缘 */
+}
+
+.identity-card--developer {
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 34vw);
+  padding: 120px 8vw 120px 0; /* Developer 的黑条放左边 */
+}
+
+.identity-index {
+  color: #35415a; /* 设置编号颜色 */
+  font-size: 14px; /* 设置编号字号 */
+}
+
+.identity-card h2 {
+  margin: 18px 0 24px; /* 设置标题上下间距 */
+  font-size: clamp(72px, 16vw, 180px); /* 让卡片标题非常醒目 */
+  font-weight: 400; /* 让卡片标题更轻 */
+  line-height: 0.92; /* 让大字更紧凑 */
+}
+
+.identity-card h2 span {
+  display: block; /* 让 I am a 单独占一行 */
+  margin-bottom: 12px; /* 设置小字和大词之间的距离 */
+  color: #35415a; /* 设置小字颜色 */
+  font-size: clamp(22px, 3vw, 38px); /* 让 I am a 比身份词小很多 */
+  line-height: 1.1; /* 控制小字行高 */
+}
+
+.identity-card p {
+  max-width: 560px; /* 限制卡片描述宽度 */
+  color: #35415a; /* 设置卡片描述颜色 */
+  font-size: 20px; /* 设置卡片描述字号 */
+  line-height: 1.6; /* 设置卡片描述行高 */
+}
+
+/* Works section */
+.works-section .section-inner {
+  max-width: 1080px; /* 让 Home 里的转盘有足够横向空间 */
+}
+
+.works-section {
+  position: relative; /* 给 Works 右侧大字图形提供定位参照 */
+  overflow: hidden; /* 隐藏 Works 大字超出部分 */
+}
+
+.works-copy {
+  position: relative; /* 只移动 Works 的文字条，不影响转盘位置 */
+}
+
+@media (min-width: 1286px) {
+  .works-copy {
+    left: calc(8vw - ((100vw - 1080px) / 2)); /* 让文字左边缘接近身份卡 */
+  }
+}
+
+.works-section h2 {
+  margin: 0 0 24px; /* 设置区块标题间距 */
+  font-size: clamp(44px, 8vw, 112px); /* 设置区块标题大小 */
+  font-weight: 400; /* 让区块标题更轻 */
+  line-height: 1; /* 控制区块标题行高 */
+}
+
+.works-title span {
+  display: block; /* 每句话单独占一行 */
+  white-space: nowrap; /* 桌面端不让一句话被拆成两行 */
+}
+
+/* Radical-inspired text bands */
+.radical-panel {
+  position: relative; /* 让进入动画和层级稳定 */
+  z-index: 1; /* 压在左侧大图形上方 */
+  width: 100%;
+  max-width: none;
+  background: #111111;
+  color: #f6f3ec;
+  opacity: 0;
+  padding: clamp(28px, 4vw, 56px) clamp(28px, 6vw, 86px);
+  box-shadow: -22px 24px 0 rgba(0, 0, 0, 0.12);
+  transform: translateX(110px);
+  transition:
+    opacity 780ms ease,
+    transform 780ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.about-section .section-inner {
+  grid-column: 1;
+}
+
+.identity-panel {
+  grid-column: 2;
+}
+
+.identity-card--developer .identity-panel {
+  grid-column: 1;
+}
+
+.radical-layout--panel-left .radical-panel {
+  box-shadow: 22px 24px 0 rgba(0, 0, 0, 0.12);
+  transform: translateX(-110px);
+}
+
+.radical-panel .section-kicker,
+.radical-panel p,
+.identity-panel .identity-index,
+.identity-panel h2 span {
+  color: #f6f3ec;
+}
+
+.radical-panel p {
+  max-width: 760px;
+}
+
+.radical-mark {
+  position: absolute;
+  top: 50%;
+  left: -5vw;
+  z-index: 0;
+  color: #111111;
+  font-size: clamp(170px, 34vw, 520px);
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  line-height: 0.78;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-120px, -50%) scale(0.96);
+  transition:
+    opacity 900ms ease,
+    transform 900ms cubic-bezier(0.18, 0.95, 0.18, 1);
+  white-space: nowrap;
+}
+
+.radical-layout--panel-left .radical-mark {
+  right: -5vw;
+  left: auto;
+  text-align: right;
+  transform: translate(120px, -50%) scale(0.96);
+}
+
+.identity-card .radical-mark {
+  left: -2vw;
+}
+
+.identity-card--developer .radical-mark {
+  right: -2vw;
+  left: auto;
+}
+
+.identity-graphic--designer {
+  width: clamp(220px, 34vw, 520px);
+  height: clamp(220px, 34vw, 520px);
+  border: 2px solid #111111;
+  background:
+    linear-gradient(90deg, transparent 49%, #111111 49%, #111111 51%, transparent 51%),
+    linear-gradient(0deg, transparent 49%, #111111 49%, #111111 51%, transparent 51%);
+}
+
+.identity-graphic--designer::before,
+.identity-graphic--designer::after {
+  position: absolute;
+  content: "";
+  border: 2px solid #111111;
+}
+
+.identity-graphic--designer::before {
+  inset: 16% 8% 48% 32%;
+}
+
+.identity-graphic--designer::after {
+  right: 12%;
+  bottom: 14%;
+  width: 42%;
+  height: 34%;
+  transform: skewX(-18deg);
+}
+
+.identity-graphic--designer span {
+  position: absolute;
+  right: 8%;
+  bottom: 4%;
+  font-size: clamp(100px, 15vw, 230px);
+  line-height: 0.8;
+}
+
+.identity-graphic--developer {
+  width: clamp(260px, 30vw, 460px);
+  min-height: 260px;
+  border: 2px solid #111111;
+  background: #111111;
+  color: #f6f3ec;
+  padding: 28px;
+  box-shadow: 18px 18px 0 rgba(0, 0, 0, 0.14);
+  font-size: clamp(13px, 1.2vw, 18px);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.55;
+}
+
+.identity-graphic--developer code,
+.identity-graphic--developer strong {
+  display: block;
+  font-family: "Courier New", monospace;
+}
+
+.identity-graphic--developer strong {
+  margin-top: 26px;
+  font-family: Arial, sans-serif;
+  font-size: clamp(42px, 5vw, 78px);
+  font-weight: 700;
+  line-height: 0.95;
+}
+
+.terminal-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.terminal-bar span {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #f6f3ec;
+  border-radius: 50%;
+}
+
+.identity-graphic--thinker {
+  width: clamp(240px, 32vw, 480px);
+  border-left: 8px solid #111111;
+  padding: 24px 0 24px 30px;
+  background:
+    linear-gradient(#111111, #111111) 30px 68% / 72% 3px no-repeat,
+    linear-gradient(#111111, #111111) 30px 78% / 58% 3px no-repeat,
+    linear-gradient(#111111, #111111) 30px 88% / 66% 3px no-repeat;
+}
+
+.identity-graphic--thinker span {
+  display: block;
+  font-size: clamp(118px, 17vw, 250px);
+  line-height: 0.78;
+}
+
+.identity-graphic--thinker small {
+  display: block;
+  max-width: 260px;
+  margin-top: 18px;
+  color: #111111;
+  font-size: clamp(18px, 2vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+
+.works-mark {
+  top: 32%;
+  font-size: clamp(120px, 22vw, 360px);
+}
+
+.reveal-section.is-visible .radical-panel {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-section.is-visible .radical-mark {
+  opacity: 1;
+  transform: translate(0, -50%) scale(1);
+}
