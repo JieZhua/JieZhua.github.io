@@ -257,6 +257,7 @@ coverflowCards.forEach((card, index) => {
 });
 
 coverflow?.addEventListener("pointerdown", (event) => {
+  event.preventDefault(); // 阻止浏览器把封面图片当成可拖拽图片
   coverflow.setPointerCapture(event.pointerId); // 捕捉鼠标，避免拖动时丢失事件
   coverflow.classList.add("is-dragging"); // 给拖动状态加 class
   coverflowIsDragging = true; // 记录正在拖动

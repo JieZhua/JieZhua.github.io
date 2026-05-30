@@ -150,7 +150,7 @@ button {
 }
 
 .hello-path-rest {
-  animation: draw-hello 4600ms ease-in-out 7.6s both; /* 控制 hello 剩余部分的书写速度和开始时间 */
+  animation: draw-hello 4600ms ease-in-out 8s both; /* 控制 hello 剩余部分的书写速度和开始时间 */
 }
 
 body.home-hello-complete .hello-path {
@@ -398,9 +398,12 @@ body.home-hello-complete .scroll-hint {
   height: 100%; /* 图片占满封面高度 */
   filter: grayscale(1); /* 默认黑白，保持整体风格统一 */
   object-fit: cover; /* 让图片像封面一样裁切铺满 */
+  pointer-events: none; /* 让鼠标拖动作用在卡片上，而不是图片本身 */
   transition:
     filter 220ms ease,
     transform 220ms ease; /* 控制图片 hover 动画 */
+  user-select: none; /* 禁止拖动时选中图片 */
+  -webkit-user-drag: none; /* 禁止浏览器把图片当成可拖拽文件 */
 }
 
 .coverflow-card--image:hover img {
