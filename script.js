@@ -1,7 +1,7 @@
 const waveText = document.querySelector("[data-wave-text]"); // 找到需要做字母波浪动画的文字
 const revealSections = document.querySelectorAll(".reveal-section"); // 找到所有需要滚动浮现的区块
-const routeLinks = Array.from(document.querySelectorAll("[data-route]")); // 找到所有可以切换页面的链接
-const navLinks = Array.from(document.querySelectorAll(".index-bar [data-route]")); // 找到顶部导航里的链接
+const currentPage = document.body.dataset.page || "home"; // 记录当前 HTML 文件代表哪个页面
+const navLinks = Array.from(document.querySelectorAll(".index-bar [data-nav-page]")); // 找到顶部导航里的链接
 const views = Array.from(document.querySelectorAll("[data-view]")); // 找到 Home、Designer、Developer 等页面视图
 const collections = Array.from(document.querySelectorAll("[data-collection]")); // 找到可以左右切换项目的页面
 const articleOpeners = Array.from(document.querySelectorAll("[data-open-article]")); // 找到项目封面按钮
@@ -52,21 +52,115 @@ revealSections.forEach((section) => {
   revealObserver.observe(section); // 让观察器开始观察每个浮现区块
 });
 
+function initCustomCursor() {
+  const canUseCursor =
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!canUseCursor) {
+    return;
+  }
+
+  const cursor = document.createElement("div");
+  cursor.className = "scan-cursor";
+  cursor.innerHTML = '<span class="scan-cursor__dot"></span>';
+  document.body.append(cursor);
+  document.body.classList.add("has-scan-cursor");
+
+  let activeReveal = null;
+  let cursorX = window.innerWidth / 2;
+  let cursorY = window.innerHeight / 2;
+  let shadowX = cursorX;
+  let shadowY = cursorY;
+
+  function setRevealPosition(reveal, event) {
+    const rect = reveal.getBoundingClientRect();
+    reveal.style.setProperty("--scan-x", `${event.clientX - rect.left}px`);
+    reveal.style.setProperty("--scan-y", `${event.clientY - rect.top}px`);
+  }
+
+  function renderCursorShadow() {
+    shadowX += (cursorX - shadowX) * 0.12;
+    shadowY += (cursorY - shadowY) * 0.12;
+    document.body.style.setProperty("--cursor-shadow-x", `${shadowX}px`);
+    document.body.style.setProperty("--cursor-shadow-y", `${shadowY}px`);
+    window.requestAnimationFrame(renderCursorShadow);
+  }
+
+  function updateRevealState(event) {
+    const target = event.target;
+    let nextReveal =
+      target instanceof Element
+        ? target.closest("[data-scan-reveal], .scan-reveal--block")
+        : null;
+
+    if (activeReveal && activeReveal !== nextReveal) {
+      activeReveal.classList.remove("is-scan-active");
+    }
+
+    activeReveal = nextReveal;
+    cursorX = event.clientX;
+    cursorY = event.clientY;
+    cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
+    document.body.classList.add("is-cursor-visible");
+    cursor.classList.add("is-visible");
+    cursor.classList.toggle("is-over-reveal", Boolean(activeReveal));
+    cursor.classList.toggle(
+      "is-over-block",
+      Boolean(activeReveal?.classList.contains("scan-reveal--block")),
+    );
+
+    if (!activeReveal) {
+      return;
+    }
+
+    setRevealPosition(activeReveal, event);
+    activeReveal.classList.add("is-scan-active");
+  }
+
+  document.addEventListener("pointermove", (event) => {
+    if (event.pointerType && event.pointerType !== "mouse" && event.pointerType !== "pen") {
+      return;
+    }
+
+    updateRevealState(event);
+  });
+
+  document.documentElement.addEventListener("mouseleave", () => {
+    activeReveal?.classList.remove("is-scan-active");
+    activeReveal = null;
+    cursor.classList.remove("is-visible", "is-over-reveal", "is-over-block");
+    document.body.classList.remove("is-cursor-visible");
+  });
+
+  renderCursorShadow();
+}
+
 function finishHomeHello() {
   document.body.classList.add("home-hello-complete"); // 标记 hello 已经播放过，之后回 Home 直接显示完成态
   window.clearTimeout(homeHelloTimer); // 清掉定时器，避免重复执行
 }
 
+function getPageUrl(route, options = {}) {
+  const targetRoute = route || "home"; // 没有写页面名时默认回到主页
+
+  if (targetRoute === "home") {
+    return options.section ? `index.html#${options.section}` : "index.html#home"; // Home 内部区块仍然用锚点
+  }
+
+  return options.article ? `${targetRoute}.html#${options.article}` : `${targetRoute}.html`; // 身份页现在是独立 HTML 文件
+}
+
 function getView(route) {
-  return views.find((view) => view.dataset.view === route) || views[0]; // 按名字找页面，找不到就回到第一个页面
+  return views.find((view) => view.dataset.view === route) || null; // 只找当前 HTML 文件里真实存在的视图
 }
 
 function setActiveNav(route, section) {
   navLinks.forEach((link) => {
-    const linkSection = link.dataset.section; // 读取这个导航是否指向 Home 里的某个区块
+    const linkSection = link.dataset.navSection; // 读取这个导航是否指向 Home 里的某个区块
     const isActive = linkSection
       ? route === "home" && linkSection === section
-      : link.dataset.route === route && !section; // 区块导航和页面导航分开判断
+      : link.dataset.navPage === route && !section; // 区块导航和页面导航分开判断
 
     link.classList.toggle("is-active", isActive); // 当前页面或当前区块的导航链接加上 is-active
   });
@@ -131,11 +225,19 @@ function revealArticle(articleName, shouldScroll = true) {
 function showView(route, options = {}) {
   const currentView = document.querySelector(".view.is-active"); // 记录切换前正在显示的页面
   const nextView = getView(route); // 找到要显示的页面
+
+  if (!nextView) {
+    window.location.href = getPageUrl(route, options); // 当前文件里没有这个视图时，跳到对应的独立页面
+    return;
+  }
+
   const nextRoute = nextView.dataset.view; // 读取真正显示的页面名字
   const hash = options.section
     ? `#${options.section}`
     : options.article
-      ? `#${nextRoute}:${options.article}`
+      ? currentPage === "home"
+        ? `#${nextRoute}:${options.article}`
+        : `#${options.article}`
       : `#${nextRoute}`; // 根据目标生成地址栏 hash
 
   if (currentView?.dataset.view === "home" && nextRoute !== "home") {
@@ -215,15 +317,6 @@ function openCover(card) {
     article: card.dataset.coverflowArticle,
   }); // 打开封面对应的页面和项目
 }
-
-routeLinks.forEach((link) => {
-  link.addEventListener("click", (event) => {
-    event.preventDefault(); // 阻止浏览器默认跳转
-    showView(link.dataset.route, {
-      section: link.dataset.section,
-    }); // 交给我们的页面切换函数处理
-  });
-});
 
 collections.forEach((collection) => {
   collection.dataset.currentIndex = collection.dataset.currentIndex || "0"; // 每组项目默认从第一个开始
@@ -324,7 +417,9 @@ coverflow?.addEventListener(
 );
 
 document.addEventListener("keydown", (event) => {
-  const activeCollection = document.querySelector(".view.is-active [data-collection]"); // 找到当前页面的 collection
+  const activeCollection =
+    document.querySelector(".view.is-active [data-collection]") ||
+    document.querySelector("[data-collection]"); // 找到当前页面的 collection
 
   if (event.key === "ArrowLeft" && activeCollection) {
     showCollectionItem(activeCollection, Number(activeCollection.dataset.currentIndex) - 1, false); // 左方向键只切上一项，不拉回页面顶部
@@ -339,11 +434,39 @@ window.addEventListener("popstate", () => {
   openInitialHash(false); // 浏览器前进后退时按地址栏恢复页面
 });
 
+window.addEventListener("hashchange", () => {
+  openInitialHash(false); // 同一页内点 Home/Works/Contact 锚点时也同步导航状态
+});
+
 function openInitialHash(updateHash) {
   const hash = window.location.hash.slice(1); // 读取地址栏 # 后面的内容
 
-  if (hash === "works" || hash === "contact") {
-    showView("home", { section: hash, updateHash }); // #works 和 #contact 都是 Home 内部区块
+  if (currentPage !== "home") {
+    const [route, article] = hash.split(":"); // 兼容旧的 #designer:project 写法
+
+    if (article) {
+      if (route && route !== currentPage) {
+        window.location.href = getPageUrl(route, { article }); // 如果旧链接指向别的身份页，就跳到正确文件
+        return;
+      }
+
+      setActiveNav(currentPage);
+      revealArticle(article, true);
+      return;
+    }
+
+    if (hash && hash !== currentPage) {
+      setActiveNav(currentPage);
+      revealArticle(hash, true); // 新页面里直接用 #project-name 打开对应项目
+      return;
+    }
+
+    showView(currentPage, { updateHash });
+    return;
+  }
+
+  if (["about", "identity", "works", "contact"].includes(hash)) {
+    showView("home", { section: hash, updateHash }); // Home 内部区块用锚点滚动
     return;
   }
 
@@ -351,5 +474,6 @@ function openInitialHash(updateHash) {
   showView(route || "home", { article, updateHash }); // 打开地址栏对应页面
 }
 
+initCustomCursor(); // 初始化克制的自定义光标
 showCover(0); // 初始化 Works 转盘
 openInitialHash(false); // 初始化当前页面

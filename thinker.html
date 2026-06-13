@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thinker / JieZhua</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/radical-sections.css" />
+    <link rel="stylesheet" href="css/works-coverflow.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/cursor-timeline.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body class="inner-page" data-page="thinker">
+    <!-- Top index navigation -->
+    <header class="index-bar">
+      <a class="index-title" href="index.html#home">
+        <span data-scan-reveal="欢迎">WELCOME</span>
+        <span class="index-domain">to zhuhuajie.com</span>
+      </a>
+
+      <nav class="index-nav" aria-label="Main navigation">
+        <a href="index.html#home" data-nav-page="home" data-scan-reveal="主页">Home</a>
+        <a href="index.html#works" data-nav-page="home" data-nav-section="works" data-scan-reveal="作品">Works</a>
+        <a href="designer.html" data-nav-page="designer" data-scan-reveal="设计">Designer</a>
+        <a href="developer.html" data-nav-page="developer" data-scan-reveal="开发">Developer</a>
+        <a href="thinker.html" data-nav-page="thinker" data-scan-reveal="思考" class="is-active">Thinker</a>
+        <a href="index.html#contact" data-nav-page="home" data-nav-section="contact" data-scan-reveal="联系">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Thinker view -->
+      <section
+        class="view page-view collection-view is-active"
+        id="thinker"
+        data-view="thinker"
+      >
+        <div class="collection" data-collection="thinker">
+          <article class="article is-current">
+            <div class="cover-entry">
+              <button
+                class="cover-entry__button"
+                type="button"
+                data-open-article="notes"
+              >
+                <span>Notes / Later</span>
+                <strong>Thought Archive</strong>
+                <small>Open project</small>
+              </button>
+              <div class="caption">
+                <h2>Thought Archive</h2>
+                <p>Philosophy, society, psychology, and unfinished questions.</p>
+              </div>
+            </div>
+
+            <div class="article-content is-open" data-article-content="notes">
+              <header class="article-header">
+                <p class="section-kicker">Notes / Later</p>
+                <h2>Thought Archive</h2>
+                <p>
+                  A future home for reading notes, essays, and unfinished ideas
+                  about philosophy, social structure, psychology, and daily
+                  experience.
+                </p>
+              </header>
+            </div>
+          </article>
+
+          <article class="article">
+            <div class="cover-entry">
+              <button
+                class="cover-entry__button"
+                type="button"
+                data-open-article="city-notes"
+              >
+                <span>Society / Later</span>
+                <strong>Society Notes</strong>
+                <small>Open project</small>
+              </button>
+              <div class="caption">
+                <h2>Society Notes</h2>
+                <p>Questions about order, belief, behavior, and public life.</p>
+              </div>
+            </div>
+
+            <div class="article-content" data-article-content="city-notes">
+              <header class="article-header">
+                <p class="section-kicker">Society / Later</p>
+                <h2>Society Notes</h2>
+                <p>
+                  Notes on how people form beliefs, how groups organize
+                  themselves, and how social systems influence ordinary life.
+                </p>
+              </header>
+            </div>
+          </article>
+
+          <button
+            class="collection-button collection-button--prev"
+            type="button"
+            data-collection-prev
+            aria-label="Previous project"
+          >
+            ‹
+          </button>
+          <button
+            class="collection-button collection-button--next"
+            type="button"
+            data-collection-next
+            aria-label="Next project"
+          >
+            ›
+          </button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

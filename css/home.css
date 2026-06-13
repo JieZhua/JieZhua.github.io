@@ -61,6 +61,37 @@ body.home-hello-complete .hello-path {
   stroke-dashoffset: 0; /* 让 hello 直接显示完整路径 */
 }
 
+.home-meta {
+  position: absolute;
+  bottom: 116px;
+  left: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 18px;
+  width: min(760px, calc(100% - 40px));
+  color: #35415a;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  animation: index-arrive 900ms ease 12s both;
+}
+
+.home-meta span + span::before {
+  content: "/";
+  margin-right: 18px;
+  color: #111111;
+  font-weight: 400;
+}
+
+body.home-hello-complete .home-meta {
+  animation: none;
+  opacity: 1;
+}
+
 /* Scroll hint */
 .scroll-hint {
   position: absolute; /* 固定在首页底部区域 */

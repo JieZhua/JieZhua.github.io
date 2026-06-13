@@ -15,6 +15,11 @@
   animation: index-arrive 900ms ease 2.65s both; /* 让顶部索引行在 WELCOME 到位后慢慢淡入 */
 }
 
+body.inner-page .index-bar {
+  opacity: 1; /* 独立身份页没有 opening 动画，所以导航直接显示 */
+  animation: none; /* 避免进入子页面时还等待首页导航动画 */
+}
+
 .index-title {
   display: flex; /* 让 WELCOME 和域名横向排布 */
   flex-wrap: wrap; /* 屏幕窄时允许域名换到下一行 */

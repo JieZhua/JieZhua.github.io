@@ -1,4 +1,18 @@
 /* About section */
+:root {
+  --radical-black: #111111;
+  --radical-paper: #f6f3ec;
+  --radical-muted: #35415a;
+  --radical-panel-padding: clamp(32px, 4.2vw, 58px) clamp(30px, 6vw, 88px);
+  --radical-panel-shadow-left: 22px 24px 0 rgba(0, 0, 0, 0.12);
+  --radical-panel-shadow-right: -22px 24px 0 rgba(0, 0, 0, 0.12);
+  --radical-slide-distance: 110px;
+  --radical-panel-transition: opacity 780ms ease,
+    transform 780ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  --radical-mark-transition: opacity 900ms ease,
+    transform 900ms cubic-bezier(0.18, 0.95, 0.18, 1);
+}
+
 .page-section {
   display: grid; /* 使用网格方便内容居中 */
   min-height: 100vh; /* 每个大区块占一屏 */
@@ -124,17 +138,19 @@
 .radical-panel {
   position: relative; /* 让进入动画和层级稳定 */
   z-index: 1; /* 压在左侧大图形上方 */
+  display: flex;
+  min-height: clamp(220px, 24vh, 320px);
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   max-width: none;
-  background: #111111;
-  color: #f6f3ec;
+  background: var(--radical-black);
+  color: var(--radical-paper);
   opacity: 0;
-  padding: clamp(28px, 4vw, 56px) clamp(28px, 6vw, 86px);
-  box-shadow: -22px 24px 0 rgba(0, 0, 0, 0.12);
-  transform: translateX(110px);
-  transition:
-    opacity 780ms ease,
-    transform 780ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  padding: var(--radical-panel-padding);
+  box-shadow: var(--radical-panel-shadow-right);
+  transform: translateX(var(--radical-slide-distance));
+  transition: var(--radical-panel-transition);
 }
 
 .about-section .section-inner {
@@ -150,19 +166,25 @@
 }
 
 .radical-layout--panel-left .radical-panel {
-  box-shadow: 22px 24px 0 rgba(0, 0, 0, 0.12);
-  transform: translateX(-110px);
+  box-shadow: var(--radical-panel-shadow-left);
+  transform: translateX(calc(var(--radical-slide-distance) * -1));
 }
 
 .radical-panel .section-kicker,
 .radical-panel p,
 .identity-panel .identity-index,
 .identity-panel h2 span {
-  color: #f6f3ec;
+  color: var(--radical-paper);
 }
 
 .radical-panel p {
   max-width: 760px;
+}
+
+.identity-panel p,
+.works-copy p,
+.about-section .radical-panel p {
+  margin-bottom: 0;
 }
 
 .radical-mark {
@@ -170,7 +192,7 @@
   top: 50%;
   left: -5vw;
   z-index: 0;
-  color: #111111;
+  color: var(--radical-black);
   font-size: clamp(170px, 34vw, 520px);
   font-weight: 700;
   letter-spacing: -0.08em;
@@ -178,9 +200,7 @@
   opacity: 0;
   pointer-events: none;
   transform: translate(-120px, -50%) scale(0.96);
-  transition:
-    opacity 900ms ease,
-    transform 900ms cubic-bezier(0.18, 0.95, 0.18, 1);
+  transition: var(--radical-mark-transition);
   white-space: nowrap;
 }
 
@@ -256,6 +276,15 @@
   font-family: "Courier New", monospace;
 }
 
+.identity-graphic--developer::after {
+  display: block;
+  margin-top: 12px;
+  color: var(--radical-paper);
+  content: "> run workflow";
+  font-family: "Courier New", monospace;
+  opacity: 0.76;
+}
+
 .identity-graphic--developer strong {
   margin-top: 26px;
   font-family: Arial, sans-serif;
@@ -285,6 +314,15 @@
     linear-gradient(#111111, #111111) 30px 68% / 72% 3px no-repeat,
     linear-gradient(#111111, #111111) 30px 78% / 58% 3px no-repeat,
     linear-gradient(#111111, #111111) 30px 88% / 66% 3px no-repeat;
+}
+
+.identity-graphic--thinker::before {
+  display: block;
+  margin-bottom: 18px;
+  content: "Plato / History / Mind";
+  font-size: clamp(16px, 1.6vw, 22px);
+  font-weight: 700;
+  letter-spacing: 0;
 }
 
 .identity-graphic--thinker span {

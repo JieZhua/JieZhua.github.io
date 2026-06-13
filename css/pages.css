@@ -104,6 +104,69 @@
   transform: scale(1.035); /* 鼠标放上去时图片轻微放大 */
 }
 
+#designer .cover-entry__button--image {
+  border-width: 2px;
+  box-shadow:
+    -18px 18px 0 rgba(0, 0, 0, 0.08),
+    0 22px 64px rgba(0, 0, 0, 0.12);
+}
+
+#designer .caption h2::before {
+  content: "Portfolio / ";
+  color: #35415a;
+  font-style: normal;
+}
+
+#developer .cover-entry__button {
+  border: 2px solid #111111;
+  background:
+    linear-gradient(#f6f3ec, #f6f3ec) 28px 68px / calc(100% - 56px) 1px no-repeat,
+    #111111;
+  box-shadow: 18px 18px 0 rgba(0, 0, 0, 0.12);
+  color: #f6f3ec;
+  font-family: "Courier New", monospace;
+}
+
+#developer .cover-entry__button:hover {
+  background:
+    linear-gradient(#111111, #111111) 28px 68px / calc(100% - 56px) 1px no-repeat,
+    #f6f3ec;
+  color: #111111;
+}
+
+#developer .cover-entry__button strong {
+  font-family: Arial, sans-serif;
+}
+
+#developer .cover-entry__button span::before {
+  content: "> ";
+}
+
+#thinker .cover-entry__button {
+  border: 0;
+  border-left: 8px solid #111111;
+  background:
+    linear-gradient(#111111, #111111) 28px 68% / 72% 3px no-repeat,
+    linear-gradient(#111111, #111111) 28px 78% / 58% 3px no-repeat,
+    linear-gradient(#111111, #111111) 28px 88% / 66% 3px no-repeat,
+    #f6f3ec;
+  box-shadow: 18px 18px 0 rgba(0, 0, 0, 0.08);
+}
+
+#thinker .cover-entry__button:hover {
+  background:
+    linear-gradient(#f6f3ec, #f6f3ec) 28px 68% / 72% 3px no-repeat,
+    linear-gradient(#f6f3ec, #f6f3ec) 28px 78% / 58% 3px no-repeat,
+    linear-gradient(#f6f3ec, #f6f3ec) 28px 88% / 66% 3px no-repeat,
+    #111111;
+}
+
+#thinker .caption h2::before {
+  content: "Reading / ";
+  color: #35415a;
+  font-style: normal;
+}
+
 .cover-entry__button span,
 .cover-entry__button small {
   font-size: 14px; /* 设置封面辅助文字大小 */
@@ -194,4 +257,3 @@
 .collection-button--next {
   right: -64px; /* 把下一项按钮放到右侧 */
 }
-
